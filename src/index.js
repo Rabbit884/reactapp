@@ -5,19 +5,43 @@ import { Provider } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import {amberA400, blueGrey800, grey50} from 'material-ui/styles/colors';
 
-import App from './containers/app';
+import { Router, hashHistory } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
+
+import AppBar from './containers/appbar';
+import AppHome from './containers/apphome';
+import AppCard from './containers/appcard';
+import AppTable from './containers/apptable';
 
 import configureStore from './store/configureStore';
 
 injectTapEventPlugin();
 
+
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: amberA400,
+    textColor: blueGrey800,
+    canvasColor: grey50,
+  },
+  appBar: {
+    height: 70,
+  },
+});
+
 ReactDOM.render(
-    <MuiThemeProvider muiTheme={ getMuiTheme(lightBaseTheme) }>
-        <Provider store={ configureStore() }>
-            <App />
-        </Provider>
+    <MuiThemeProvider muiTheme={ muiTheme }>
+      <Provider store={ configureStore() }>
+        <Router history={ hashHistory } >
+          <Route path="/" component={AppBar}>
+            <IndexRoute component={AppHome} />
+            <Route path="table" component={AppTable} />
+            <Route path="card" component={AppCard} />
+          </Route>
+        </Router>
+      </Provider>
     </MuiThemeProvider>
     ,
   document.getElementById('root')

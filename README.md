@@ -1,2 +1,2 @@
 # reactapp
-this is a react application for test.
+this is a trial application for react.

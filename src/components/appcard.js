@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 export default class AppCard extends React.Component {
     render(){
@@ -11,8 +11,8 @@ export default class AppCard extends React.Component {
                 />
                 
                 <CardActions>
-                <FlatButton label="■" onClick={ () => this.props.handleAdd() } />
-                <FlatButton label="減" onClick={ () => this.props.handleCut() } />
+                <FloatingActionButton onClick={ () => this.props.handleAdd() } >増</FloatingActionButton>
+                <FloatingActionButton onClick={ () => this.props.handleCut() } >減</FloatingActionButton>
                 </CardActions>
             </Card>
         );
