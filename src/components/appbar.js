@@ -3,13 +3,24 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 
+import { Link } from 'react-router';
+
 const titleName = [
-  'Home',
-  'Table',
-  'Card'
+  {
+    title: 'Home',
+    link: '/'
+  },
+  {
+    title: 'Table',
+    link: '/table'
+  },
+  {
+    title: 'Card',
+    link: '/card'
+  }
 ];
 
-class AppBarSimple extends React.Component {
+export default class AppBar_ extends React.Component {
 
   constructor(props) {
     super(props);
@@ -31,7 +42,8 @@ class AppBarSimple extends React.Component {
         return (
             <MenuItem
             onTouchTap={this.closeDrawer.bind(this, i)} 
-            primaryText={item}
+            containerElement={<Link to={item.link} />}
+            primaryText={item.title}
             />
         )
       })
@@ -39,17 +51,17 @@ class AppBarSimple extends React.Component {
       return (
           <div>
             <AppBar
-              title={titleName[this.props.display]}
+              title={titleName[this.props.display].title}
               iconClassNameRight="muidocs-icon-navigation-expand-more"
               onLeftIconButtonTouchTap={this.handleTouchTap}
-            />
+            /><br />
 
             <Drawer open={this.state.open}>
-              {menuItems}
+              { menuItems }
             </Drawer>
+
+            { this.props.children }
           </div>
           )
       }
   }
-
-  export { AppBarSimple }
