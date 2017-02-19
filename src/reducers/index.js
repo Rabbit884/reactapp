@@ -1,20 +1,23 @@
 // 初期ステート設定
 const initialState = {
   display: 0,
-  square: ""
+  square: ''
 }
 
 // actionに応じてステート変更
-export default function reducer(state = initialState, action) {
-  switch(action.type) {
+export default function reducer (state = initialState, action) {
+  switch (action.type) {
     case 'INCREMENT': {
-        return { display: state.display, square: state.square + "■" }
+      return { display: state.display, square: state.square + '■' }
     }
     case 'DECREMENT': {
-        return { display: state.display, square: state.square.slice(1) }
+      return { display: state.display, square: state.square.slice(1) }
     }
     case 'SET_DISPLAY': {
-        return { display: action.display, square: state.square }
+      return { display: action.display, square: state.square }
+    }
+    case 'REQUEST_POST': {
+      return { display: action.data.display, square: action.data.square }
     }
     default:
       return state

@@ -41,6 +41,7 @@ export default class AppBar_ extends React.Component {
       const menuItems = titleName.map((item, i) => {
         return (
             <MenuItem
+            key={i}
             onTouchTap={this.closeDrawer.bind(this, i)} 
             containerElement={<Link to={item.link} />}
             primaryText={item.title}

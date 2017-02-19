@@ -1,18 +1,15 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import AppHome from '../components/apphome'
 import Actions from '../actions/apphome'
+import { Request } from '../actions/action'
 
-import { selectReddit, fetchPosts } from '../actions/action';
-
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return state
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
-    select: () => { dispatch(selectReddit(Actions.test())) },
-    fetch:  () => { dispatch(fetchPosts(Actions.test())) }
+    post: () => { dispatch(Request(Actions.requestPost())) }
   }
 }
 

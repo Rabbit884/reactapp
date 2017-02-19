@@ -1,13 +1,12 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import AppTable from '../components/apptable'
 import Actions from '../actions/apptable'
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return state
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
 
   }
