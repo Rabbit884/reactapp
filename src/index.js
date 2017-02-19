@@ -1,35 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {amberA400, blueGrey800, grey50} from 'material-ui/styles/colors';
+import injectTapEventPlugin from 'react-tap-event-plugin'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import {amberA400, blueGrey800, grey50} from 'material-ui/styles/colors'
 
-import { Router, hashHistory } from 'react-router';
-import { Route, IndexRoute } from 'react-router';
+import { Router, hashHistory } from 'react-router'
+import { Route, IndexRoute } from 'react-router'
 
-import AppBar from './containers/appbar';
-import AppHome from './containers/apphome';
-import AppCard from './containers/appcard';
-import AppTable from './containers/apptable';
+import AppBar from './containers/appbar'
+import AppHome from './containers/apphome'
+import AppCard from './containers/appcard'
+import AppTable from './containers/apptable'
 
-import configureStore from './store/configureStore';
+import configureStore from './store/configureStore'
 
-injectTapEventPlugin();
+injectTapEventPlugin()
 
 
 const muiTheme = getMuiTheme({
   palette: {
     primary1Color: amberA400,
     textColor: blueGrey800,
-    canvasColor: grey50,
+    canvasColor: grey50
   },
   appBar: {
-    height: 70,
-  },
-});
+    height: 70
+  }
+})
 
 ReactDOM.render(
     <MuiThemeProvider muiTheme={ muiTheme }>
@@ -45,4 +45,4 @@ ReactDOM.render(
     </MuiThemeProvider>
     ,
   document.getElementById('root')
-);
+)

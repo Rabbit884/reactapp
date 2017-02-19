@@ -1,3 +1,5 @@
 // 既定の設定とユーザー設定を上書きするには、このファイル内に設定を挿入します
 {
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 12
 }
