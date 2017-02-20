@@ -1,19 +1,27 @@
-import axios from 'axios'
-
-axios.defaults.baseURL = 'http://localhost:9000'
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8'
+import $ from 'jquery'
 
 export function Request (action) {
-  axios.post('/api/test', {
-    display: action.data.display,
-    square: action.data.square
-  })
-  .then(function (response) {
-    console.log(response)
-    return response
-  })
-  .catch(function (error) {
-    console.log(error)
-    return action
+  console.log('Ajax start')
+  console.log(action.data.display)
+  console.log(action.data.square)
+  $.ajax({
+    type: 'POST',
+    url: 'http://localhost:9000/api/test',
+    accepts: {
+      'Access-Control-Allow-Origin': '*'
+    },
+    timeout: 10000,
+    cache: false,
+    data: {
+      display: action.data.display,
+      square: action.data.square
+    },
+    dataType: 'json'
+  }).done((data) => {
+    return { type: 'REQUEST_POST', data: data }
+  }).fail((data) => {
+    return { type: 'RESPONSE', data: data }
+  }).always(function (data) {
+
   })
 }

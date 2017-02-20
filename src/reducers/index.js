@@ -6,6 +6,7 @@ const initialState = {
 
 // actionに応じてステート変更
 export default function reducer (state = initialState, action) {
+  console.log(action)
   switch (action.type) {
     case 'INCREMENT': {
       return { display: state.display, square: state.square + '■' }
@@ -17,6 +18,11 @@ export default function reducer (state = initialState, action) {
       return { display: action.display, square: state.square }
     }
     case 'REQUEST_POST': {
+      console.log('REQUEST_POST')
+      return { display: action.data.display, square: action.data.square }
+    }
+    case 'RESPONSE': {
+      console.log('RESPONSE')
       return { display: action.data.display, square: action.data.square }
     }
     default:
