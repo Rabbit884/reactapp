@@ -1,8 +1,9 @@
-import React from 'react';
+import React from 'react'
 import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
-  from 'material-ui/Table';
-import TextField from 'material-ui/TextField';
-import Toggle from 'material-ui/Toggle';
+  from 'material-ui/Table'
+import TextField from 'material-ui/TextField'
+import Toggle from 'material-ui/Toggle'
+import RaisedButton from 'material-ui/RaisedButton'
 
 const styles = {
   propContainer: {
@@ -13,55 +14,12 @@ const styles = {
   propToggleHeader: {
     margin: '20px auto 10px',
   },
-};
-
-const tableData = [
-  {
-    name: 'JavaScript',
-    status: 'Dynamic',
-  },
-  {
-    name: 'Ruby',
-    status: 'Dynamic',
-  },
-  {
-    name: 'Python',
-    status: 'Dynamic',
-  },
-  {
-    name: 'PHP',
-    status: 'Dynamic',
-  },
-  {
-    name: 'Java',
-    status: 'Static',
-  },
-  {
-    name: 'C',
-    status: 'Static',
-  },
-  {
-    name: 'Swift',
-    status: 'Static',
-  },
-  {
-    name: 'C++',
-    status: 'Static',
-  },
-  {
-    name: 'C#',
-    status: 'Static',
-  },
-  {
-    name: 'SQL',
-    status: 'Static',
-  },
-];
+}
 
 export default class AppTable extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       fixedHeader: true,
@@ -74,22 +32,24 @@ export default class AppTable extends React.Component {
       deselectOnClickaway: true,
       showCheckboxes: true,
       height: '250px',
-    };
+      data: props.tableData,
+    }
   }
 
   handleToggle = (event, toggled) => {
     this.setState({
       [event.target.name]: toggled,
-    });
-  };
+    })
+  }
 
   handleChange = (event) => {
-    this.setState({height: event.target.value});
-  };
+    this.setState({height: event.target.value})
+  }
 
   render() {
     return (
       <div>
+        <RaisedButton label="検索" onClick={ this.props.post() } />
         <Table
           height={this.state.height}
           fixedHeader={this.state.fixedHeader}
@@ -119,11 +79,11 @@ export default class AppTable extends React.Component {
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}
           >
-            {tableData.map( (row, index) => (
+            {this.state.data.map( (row, index) => (
               <TableRow key={index} selected={row.selected}>
                 <TableRowColumn>{index}</TableRowColumn>
-                <TableRowColumn>{row.name}</TableRowColumn>
-                <TableRowColumn>{row.status}</TableRowColumn>
+                <TableRowColumn>{row.value}</TableRowColumn>
+                <TableRowColumn>{row.len}</TableRowColumn>
               </TableRow>
               ))}
           </TableBody>
@@ -133,6 +93,6 @@ export default class AppTable extends React.Component {
           </TableFooter>
         </Table>
       </div>
-    );
+    )
   }
 }

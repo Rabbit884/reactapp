@@ -1,15 +1,12 @@
 import { connect } from 'react-redux'
 import AppHome from '../components/apphome'
 import Actions from '../actions/apphome'
-import { Request } from '../actions/action'
 
-function mapStateToProps (state) {
-  return state
-}
+const mapStateToProps = (state) => { return state }
 
-function mapDispatchToProps (dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
-    post: () => { dispatch(Request(Actions.requestPost())) }
+    post: (data) => { dispatch(Actions.requestPost(data)) }
   }
 }
 

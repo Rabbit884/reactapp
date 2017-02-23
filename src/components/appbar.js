@@ -22,11 +22,11 @@ const titleName = [
 
 export default class AppBar_ extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       open: false
-    };
+    }
   }
 
   handleTouchTap = () => {this.setState({open: !this.state.open})}

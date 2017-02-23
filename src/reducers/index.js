@@ -1,29 +1,34 @@
+import * as actions from '../actions/actions'
+import { hashHistory } from 'react-router'
+
 // 初期ステート設定
 const initialState = {
   display: 0,
-  square: ''
+  square: '',
+  tableData: []
 }
 
 // actionに応じてステート変更
 export default function reducer (state = initialState, action) {
-  console.log(action)
   switch (action.type) {
-    case 'INCREMENT': {
-      return { display: state.display, square: state.square + '■' }
+    case actions.INCREMENT: {
+      return Object.assign({}, state, {square: state.square + '■'})
     }
-    case 'DECREMENT': {
-      return { display: state.display, square: state.square.slice(1) }
+    case actions.DECREMENT: {
+      return Object.assign({}, state, {square: state.square.slice(1)})
     }
-    case 'SET_DISPLAY': {
-      return { display: action.display, square: state.square }
+    case actions.CHANGE_SECTION: {
+      return Object.assign({}, state, {display: action.display})
     }
-    case 'REQUEST_POST': {
-      console.log('REQUEST_POST')
-      return { display: action.data.display, square: action.data.square }
+    case actions.SEARCH_DATA: {
+      return Object.assign({}, state, {tableData: action.data})
     }
-    case 'RESPONSE': {
-      console.log('RESPONSE')
-      return { display: action.data.display, square: action.data.square }
+    case actions.RECV_DATA: {
+      return Object.assign({}, state, {display: action.data.display, square: action.data.square})
+    }
+    case actions.FAIL_HTTP: {
+      hashHistory.push('/error')
+      return Object.assign({}, state, {display: 0, square: ''})
     }
     default:
       return state

@@ -14,6 +14,7 @@ import AppBar from './containers/appbar'
 import AppHome from './containers/apphome'
 import AppCard from './containers/appcard'
 import AppTable from './containers/apptable'
+import AppError from './containers/apperror'
 
 import configureStore from './store/configureStore'
 
@@ -40,6 +41,7 @@ ReactDOM.render(
             <Route path="table" component={AppTable} />
             <Route path="card" component={AppCard} />
           </Route>
+          <Route path="/error" component={AppError} />
         </Router>
       </Provider>
     </MuiThemeProvider>

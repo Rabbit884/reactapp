@@ -2,13 +2,11 @@ import { connect } from 'react-redux'
 import AppTable from '../components/apptable'
 import Actions from '../actions/apptable'
 
-function mapStateToProps (state) {
-  return state
-}
+const mapStateToProps = (state) => { return state }
 
-function mapDispatchToProps (dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
-
+    post: () => { dispatch(Actions.requestPost()) }
   }
 }
 
