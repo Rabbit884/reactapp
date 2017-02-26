@@ -1,8 +1,10 @@
+import * as Types from './actiontypes'
+
 export default {
   increment: () => {
-    return { type: 'INCREMENT' }
+    return { type: Types.INCREMENT }
   },
   decrement: () => {
-    return { type: 'DECREMENT' }
+    return { type: Types.DECREMENT }
   }
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import LinearProgress from 'material-ui/LinearProgress';
+import { cyanA200 } from 'material-ui/styles/colors'
 
 import { Link } from 'react-router';
 
@@ -22,11 +24,11 @@ const titleName = [
 
 export default class AppBar_ extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       open: false
-    };
+    }
   }
 
   handleTouchTap = () => {this.setState({open: !this.state.open})}
@@ -52,10 +54,12 @@ export default class AppBar_ extends React.Component {
       return (
           <div>
             <AppBar
-              title={titleName[this.props.display].title}
+              title={titleName[this.props.home.display].title}
               iconClassNameRight="muidocs-icon-navigation-expand-more"
               onLeftIconButtonTouchTap={this.handleTouchTap}
-            /><br />
+            />
+            
+            <LinearProgress style={this.props.progress} mode="indeterminate" color={cyanA200} />
 
             <Drawer open={this.state.open}>
               { menuItems }

@@ -7,7 +7,7 @@ export default class AppCard extends React.Component {
     return (
       <Card>
         <CardHeader
-          title={this.props.square}
+          title={this.props.card.square}
         />
 
         <CardActions>

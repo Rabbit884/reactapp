@@ -1,7 +1,7 @@
 module.exports = {
-  entry: __dirname + "/src/index.js",
+  entry: __dirname + '/src/index.js',
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/../PlayApi/public/javascripts',
     filename: 'bundle.js'
   },
 
@@ -11,14 +11,14 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        query:{
+        query: {
           presets: ['react', 'es2015', 'stage-1']
         }
       }
     ]
   },
-  devtool: 'source-map',
+  devtool: ['source-map', 'inline-source-map', 'eval-source-map'],
   resolve: {
     extensions: ['.js', '.jsx']
   }
-};
+}
