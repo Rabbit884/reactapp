@@ -1,5 +1,5 @@
 import 'whatwg-fetch'
-import * as actions from './actions'
+import * as Types from './actiontypes'
 
 export default {
   requestPost: (data) => {
@@ -7,14 +7,10 @@ export default {
   }
 }
 
-const requestData = () => {
-  return {type: actions.REQ_DATA}
-}
-
 const receiveData = (json) => {
   console.log('通信成功')
   return {
-    type: actions.RECV_DATA,
+    type: Types.RECV_DATA,
     data: json
   }
 }
@@ -22,7 +18,7 @@ const receiveData = (json) => {
 const receiveError = (json) => {
   console.log('通信失敗')
   return {
-    type: actions.FAIL_HTTP,
+    type: Types.FAIL_HTTP,
     data: json
   }
 }
@@ -33,11 +29,7 @@ const fetchData = (data) => {
       method: 'POST',
       mode: 'cors',
       credentials: 'include',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         display: data.display,
         square: data.square

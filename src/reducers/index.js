@@ -1,34 +1,44 @@
-import * as actions from '../actions/actions'
+import * as Types from '../actions/actiontypes'
 import { hashHistory } from 'react-router'
 
-// 初期ステート設定
 const initialState = {
-  display: 0,
-  square: '',
-  tableData: []
+  home: {
+    display: 0
+  },
+  table: {
+    tableData: []
+  },
+  card: {
+    square: ''
+  },
+  progress: {
+    visibility: 'hidden'
+  }
 }
 
-// actionに応じてステート変更
 export default function reducer (state = initialState, action) {
   switch (action.type) {
-    case actions.INCREMENT: {
-      return Object.assign({}, state, {square: state.square + '■'})
+    case Types.INCREMENT: {
+      return Object.assign({}, state, {card: {square: state.card.square + '■'}})
     }
-    case actions.DECREMENT: {
-      return Object.assign({}, state, {square: state.square.slice(1)})
+    case Types.DECREMENT: {
+      return Object.assign({}, state, {card: {square: state.card.square.slice(1)}})
     }
-    case actions.CHANGE_SECTION: {
-      return Object.assign({}, state, {display: action.display})
+    case Types.CHANGE_SECTION: {
+      return Object.assign({}, state, {home: {display: action.display}})
     }
-    case actions.SEARCH_DATA: {
-      return Object.assign({}, state, {tableData: action.data})
+    case Types.SEARCH_DATA: {
+      return Object.assign({}, state, {table: {tableData: action.data}, progress: {visibility: 'hidden'}})
     }
-    case actions.RECV_DATA: {
-      return Object.assign({}, state, {display: action.data.display, square: action.data.square})
+    case Types.RECV_DATA: {
+      return Object.assign({}, state, {home: {display: action.data.display}, card: {square: action.data.square}, progrres: {visibility: 'hidden'}})
     }
-    case actions.FAIL_HTTP: {
+    case Types.FAIL_HTTP: {
       hashHistory.push('/error')
-      return Object.assign({}, state, {display: 0, square: ''})
+      return Object.assign({}, state, {progress: {visibility: 'hidden'}})
+    }
+    case Types.SEARCH_LOADING: {
+      return Object.assign({}, state, {progress: {visibility: 'visible'}})
     }
     default:
       return state

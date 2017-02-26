@@ -1,10 +1,10 @@
-import * as actions from './actions'
+import * as Types from './actiontypes'
 
 export default {
   increment: () => {
-    return { type: actions.INCREMENT }
+    return { type: Types.INCREMENT }
   },
   decrement: () => {
-    return { type: actions.DECREMENT }
+    return { type: Types.DECREMENT }
   }
 }

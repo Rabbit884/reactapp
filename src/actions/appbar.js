@@ -1,9 +1,9 @@
-import * as actions from './actions'
+import * as Types from './actiontypes'
 
 export default {
   setdisplay: (x) => {
     return {
-      type: actions.CHANGE_SECTION,
+      type: Types.CHANGE_SECTION,
       display: x
     }
   }

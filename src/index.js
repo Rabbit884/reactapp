@@ -7,8 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import {amberA400, blueGrey800, grey50} from 'material-ui/styles/colors'
 
-import { Router, hashHistory } from 'react-router'
-import { Route, IndexRoute } from 'react-router'
+import { Router, hashHistory, Route, IndexRoute } from 'react-router'
 
 import AppBar from './containers/appbar'
 import AppHome from './containers/apphome'

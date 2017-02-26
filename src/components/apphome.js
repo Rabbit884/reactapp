@@ -4,12 +4,11 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 export default class AppHome extends React.Component {
 
-  constructor (props) {
-    super(props)
-    this.state = {
-      display: props.display,
-      square: props.square
-    }
+  post = () => {
+    this.props.post({
+      display: this.props.home.display,
+      square: this.props.card.square
+    });
   }
 
   render () {
@@ -25,7 +24,7 @@ export default class AppHome extends React.Component {
         </p>
         <br />
         <br />
-        <RaisedButton label="TEST 1" onClick={ this.props.post(this.state) } />
+        <RaisedButton label="TEST 1" onClick={ this.post.bind(this) } />
         <br />
         <br />
         <RaisedButton label="TEST 2" />

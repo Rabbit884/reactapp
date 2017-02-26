@@ -1,10 +1,9 @@
 import 'whatwg-fetch'
 import * as Types from './actiontypes'
-import Fetch from './actionfetch'
 
 export default {
-  requestPost: () => {
-    return Fetch.requestPost('/api/search', {})
+  requestPost: (path, data) => {
+    return fetchData(path, data)
   }
 }
 
@@ -19,26 +18,26 @@ const receiveData = (json) => {
   console.log('通信成功')
   return {
     type: Types.SEARCH_DATA,
-    data: json.recodeList
+    data: json
   }
 }
 
 const receiveError = (json) => {
   console.log('通信失敗')
   return {
-    type: Types.FAIL_HTTP,
-    data: json
+    type: Types.FAIL_HTTP
   }
 }
 
-const fetchData = () => {
+const fetchData = (path, data) => {
   return dispatch => {
     dispatch(requestData())
-    return fetch ('http://localhost:9000/api/search', {
-      method: 'GET',
+    return fetch ('http://localhost:9000' + path, {
+      method: 'POST',
       mode: 'cors',
       credentials: 'include',
-      headers: {'Content-Type': 'application/json'}
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
     }).then(response => response.json())
     .then(json => dispatch(receiveData(json)))
     .catch(ex => dispatch(receiveError(ex)))
